@@ -1,0 +1,26 @@
+<div class='container px-5 px-sm-0'>
+  <div class='row'>
+<%= render 'layouts/left', user: @user, book: @new_book %>
+
+<div class='col-md-8 offset-md-1'>
+<h1>Book detail</h1>
+<table class="table">
+<div>
+  <%= link_to(user_path(@book.user)) do %>
+    <%= image_tag @book.user.get_profile_image(100,100) %>
+  <% end %>
+  <%= link_to(user_path(@book.user)) do %>
+    <%= @book.user.name %>
+  <% end %>
+  <%= link_to @book.title, book_path(@book) %>
+  <%= @book.body %>
+  
+  <% if @book.user == current_user %>
+ <%= link_to "Edit", edit_book_path(@book), class:"btn btn-sm btn-success" %>
+<%= link_to "Destroy", book_path(@book), class:"btn btn-sm btn-danger",method: :delete, "data-confirm" => "本当に削除しますか？" %>
+<% end %>
+</div>
+</div>
+</table>
+</div>
+</div>
