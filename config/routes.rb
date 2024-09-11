@@ -7,4 +7,8 @@ Rails.application.routes.draw do
   get 'home/about', to: 'homes#about', as: 'about'
   #get 'users', to: 'users#index', as: 'index_users'
   #get 'books', to: 'books#index', as: 'index_books'
+  
+  devise_scope :user do
+    post "users/guest_sign_in", to: "users/sessions#guest_sign_in"
+  end
 end
